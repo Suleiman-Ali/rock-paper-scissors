@@ -1,0 +1,100 @@
+$break-point-0: 500px;
+$break-point-1: 600px;
+
+.choises {
+  width: 100%;
+  max-width: 100rem;
+  padding: 7.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+
+  .handsBox {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+
+    .handBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      &__hand {
+        font-size: 7.5rem;
+
+        @media screen and (min-width: $break-point-0) {
+          font-size: 10rem;
+        }
+
+        @media screen and (min-width: $break-point-1) {
+          font-size: 12.5rem;
+        }
+      }
+
+      &__text {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        color: #fff;
+
+        @media screen and (min-width: $break-point-1) {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .result {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    &__text {
+      font-size: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      font-weight: 600;
+      color: #fff;
+
+      @media screen and (min-width: $break-point-1) {
+        font-size: 5rem;
+      }
+    }
+
+    &__btn {
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      padding: 1rem 5rem;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #040484;
+      transition: all 0.25s;
+      cursor: pointer;
+
+      @media screen and (min-width: $break-point-1) {
+        font-size: 2rem;
+
+        &:hover {
+          transform: scale(1.025);
+        }
+
+        &:active {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
