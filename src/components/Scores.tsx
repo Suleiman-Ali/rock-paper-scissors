@@ -1,5 +1,6 @@
 import Button from './Button';
 import Score from './Score';
+import Wrapper from './Wrapper';
 import styles from '../styles/Scores.module.scss';
 
 interface ScoresProps {
@@ -8,7 +9,7 @@ interface ScoresProps {
   scoreOneText: string;
   scoreTwoText: string;
   btnText: string;
-  resetHandler: () => void;
+  resetHandler: VoidFunction;
 }
 
 function Scores({
@@ -20,7 +21,7 @@ function Scores({
   resetHandler,
 }: ScoresProps): JSX.Element {
   return (
-    <div className={styles.scores}>
+    <Wrapper className={styles.scores}>
       <Score
         text={scoreOneText}
         score={computerScore}
@@ -40,7 +41,7 @@ function Scores({
         textCls={styles.scores__text}
         scoreCls={styles.scores__number}
       />
-    </div>
+    </Wrapper>
   );
 }
 

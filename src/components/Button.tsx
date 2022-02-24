@@ -3,14 +3,14 @@ import { MouseEventHandler } from 'react';
 interface ButtonProps {
   text: string;
   className?: string;
-  clickHandler?: MouseEventHandler<HTMLDivElement>;
+  clickHandler?: MouseEventHandler<HTMLButtonElement>;
 }
 
 function Button({ text, className, clickHandler }: ButtonProps): JSX.Element {
   return (
-    <div className={className} onClick={clickHandler}>
+    <button className={className} onClick={clickHandler}>
       {text}
-    </div>
+    </button>
   );
 }
 

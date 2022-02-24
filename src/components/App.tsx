@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { GameObj } from '../common/types';
+import { GameObjOrNull } from '../common/types';
 import {
+  equals,
   getComputerChoise,
   getWonLastText,
   renderIf,
@@ -10,35 +11,37 @@ import data, {
   choisesBtnText,
   choisesLeftText,
   choisesRightText,
+  COMPUTER,
   scoreBtnText,
   scoreLeftText,
   scoreRightText,
+  USER,
 } from '../common/data';
 import Choises from './Choises';
 import Hands from './Hands';
 import Scores from './Scores';
+import Wrapper from './Wrapper';
 
 function App(): JSX.Element {
-  const [computerChoise, setComputerChoise] = useState<GameObj | null>(null);
-  const [userChoise, setUserChoise] = useState<GameObj | null>(null);
-
+  const [computerChoise, setComputerChoise] = useState<GameObjOrNull>(null);
+  const [userChoise, setUserChoise] = useState<GameObjOrNull>(null);
   const [userScore, setUserScore] = useState<number>(0);
   const [computerScore, setComputerScore] = useState<number>(0);
-
   const [wating, setWating] = useState<boolean>(true);
   const [wonLast, setWonLast] = useState<string>('');
 
-  const handClickHandler = (userChoose: GameObj | null): void => {
+  const handClickHandler = (userChoose: GameObjOrNull): void => {
     const computerChoose = getComputerChoise();
-    const won = whoWon(userChoose, computerChoose);
+    const winner = whoWon(userChoose, computerChoose);
 
     setComputerChoise(computerChoose);
     setUserChoise(userChoose);
 
-    if (won === 'USER') setUserScore((us) => us + 1);
-    if (won === 'COMPUTER') setComputerScore((cs) => cs + 1);
+    if (equals(winner, USER)) setUserScore((userScore) => userScore + 1);
+    if (equals(winner, COMPUTER))
+      setComputerScore((computerScore) => computerScore + 1);
 
-    setWonLast(getWonLastText(won));
+    setWonLast(getWonLastText(winner));
 
     setWating((wating) => !wating);
   };
@@ -60,7 +63,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <div className="app">
+    <Wrapper className="app">
       <Scores
         userScore={userScore}
         computerScore={computerScore}
@@ -85,10 +88,13 @@ function App(): JSX.Element {
           playAgianHandler={playAgianHandler}
         />
       )}
-    </div>
+    </Wrapper>
   );
 }
 
 export default App;
 
-// TODO REFACTOR
+// TODO ADD RULES PAGE
+// TODO ADD AUTHOR COMPONENT
+// TODO REFACTOR Functionality
+// TODO REFACTOR STYLEING

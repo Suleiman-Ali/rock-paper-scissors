@@ -52,6 +52,9 @@ $break-point-1: 600px;
   }
 
   &__btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
     position: absolute;
     top: 50%;
     left: 50%;

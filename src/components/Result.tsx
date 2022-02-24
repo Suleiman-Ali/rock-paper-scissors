@@ -1,4 +1,5 @@
 import Button from './Button';
+import Wrapper from './Wrapper';
 
 interface ResultProps {
   winner: string;
@@ -6,16 +7,16 @@ interface ResultProps {
   blockCls?: string;
   textCls?: string;
   btnCls?: string;
-  playAgianHandler: () => void;
+  playAgianHandler: VoidFunction;
 }
 
 // prettier-ignore
 function Result({ winner, btnText, blockCls, textCls, btnCls, playAgianHandler }: ResultProps): JSX.Element {
   return (
-    <div className={blockCls}>
+    <Wrapper className={blockCls}>
       <p className={textCls}>{winner}</p>
       <Button className={btnCls} text={btnText} clickHandler={() => playAgianHandler()}  />
-    </div>
+    </Wrapper>
   );
 }
 

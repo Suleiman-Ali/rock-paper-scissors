@@ -1,3 +1,5 @@
+import Wrapper from './Wrapper';
+
 interface ScoreProps {
   text: string;
   score: number;
@@ -14,10 +16,10 @@ function Score({
   scoreCls,
 }: ScoreProps): JSX.Element {
   return (
-    <div className={blockCls}>
+    <Wrapper className={blockCls}>
       <p className={textCls}>{text}</p>
       <p className={scoreCls}>{score}</p>
-    </div>
+    </Wrapper>
   );
 }
 

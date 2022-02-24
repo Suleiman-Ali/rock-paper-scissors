@@ -1,21 +1,15 @@
-import { GameObj } from '../common/types';
+import { MouseEventHandler } from 'react';
+import { GameObjOrNull } from '../common/types';
 
 interface HandProps {
-  handObj: GameObj | null;
+  handObj: GameObjOrNull;
   className?: string;
-  handClickHandler?: (userChoose: GameObj | null) => void;
+  clickHandler?: MouseEventHandler<HTMLDivElement>;
 }
 
-function Hand({
-  handObj,
-  className,
-  handClickHandler,
-}: HandProps): JSX.Element {
+function Hand({ handObj, className, clickHandler }: HandProps): JSX.Element {
   return (
-    <div
-      className={className}
-      onClick={() => (handClickHandler ? handClickHandler(handObj) : null)}
-    >
+    <div className={className} onClick={clickHandler}>
       {handObj?.img}
     </div>
   );

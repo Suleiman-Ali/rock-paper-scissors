@@ -1,5 +1,5 @@
-import data, { PAPER, ROCK, SCISSORS } from './data';
-import { GameObj } from './types';
+import data, { PAPER, ROCK, SCISSORS, USER, COMPUTER, DRAW } from './data';
+import { GameObjOrNull, GameObj } from './types';
 
 export const renderIf = (
   condition: boolean,
@@ -12,27 +12,27 @@ export const getComputerChoise = (): GameObj =>
 export const equals = (el1: any, el2: any): boolean => el1 === el2;
 
 export const whoWon = (
-  userChoise: GameObj | null,
-  computerChoise: GameObj | null
+  userChoise: GameObjOrNull,
+  computerChoise: GameObjOrNull
 ): string => {
   if (!userChoise || !computerChoise) return '';
 
-  if (equals(userChoise.name, computerChoise.name)) return 'DRAW';
+  if (equals(userChoise.name, computerChoise.name)) return DRAW;
 
   if (equals(userChoise.name, ROCK) && equals(computerChoise.name, SCISSORS))
-    return 'USER';
+    return USER;
 
   if (equals(userChoise.name, SCISSORS) && equals(computerChoise.name, PAPER))
-    return 'USER';
+    return USER;
 
   if (equals(userChoise.name, PAPER) && equals(computerChoise.name, ROCK))
-    return 'USER';
+    return USER;
 
-  return 'COMPUTER';
+  return COMPUTER;
 };
 
 export const getWonLastText = (winner: string): string => {
-  if (winner === 'USER') return 'YOU WIN';
-  if (winner === 'COMPUTER') return 'YOU LOSE';
-  return 'DRAW';
+  if (equals(winner, USER)) return 'YOU WIN';
+  if (equals(winner, COMPUTER)) return 'YOU LOSE';
+  return DRAW;
 };

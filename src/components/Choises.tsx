@@ -1,16 +1,17 @@
-import { GameObj } from '../common/types';
-import Hand from './Hand';
+import { GameObjOrNull } from '../common/types';
 import Result from './Result';
+import Wrapper from './Wrapper';
+import HandBox from './HandBox';
 import styles from '../styles/Choises.module.scss';
 
 interface ChoisesProps {
-  userChoise: GameObj | null;
-  computerChoise: GameObj | null;
+  userChoise: GameObjOrNull;
+  computerChoise: GameObjOrNull;
   winner: string;
   btnText: string;
   userPickText: string;
   housePickText: string;
-  playAgianHandler: () => void;
+  playAgianHandler: VoidFunction;
 }
 
 function Choises({
@@ -23,18 +24,24 @@ function Choises({
   playAgianHandler,
 }: ChoisesProps): JSX.Element {
   return (
-    <div className={styles.choises}>
-      <div className={styles.handsBox}>
-        <div className={styles.handBox}>
-          <Hand handObj={computerChoise} className={styles.handBox__hand} />
-          <p className={styles.handBox__text}>{housePickText}</p>
-        </div>
+    <Wrapper className={styles.choises}>
+      <Wrapper className={styles.handsBox}>
+        <HandBox
+          className={styles.handBox}
+          handObj={computerChoise}
+          text={housePickText}
+          handCls={styles.handBox__hand}
+          textCls={styles.handBox__text}
+        />
 
-        <div className={styles.handBox}>
-          <Hand handObj={userChoise} className={styles.handBox__hand} />
-          <p className={styles.handBox__text}>{userPickText}</p>
-        </div>
-      </div>
+        <HandBox
+          className={styles.handBox}
+          handObj={userChoise}
+          text={userPickText}
+          handCls={styles.handBox__hand}
+          textCls={styles.handBox__text}
+        />
+      </Wrapper>
 
       <Result
         winner={winner}
@@ -44,7 +51,7 @@ function Choises({
         btnCls={styles.result__btn}
         playAgianHandler={playAgianHandler}
       />
-    </div>
+    </Wrapper>
   );
 }
 
