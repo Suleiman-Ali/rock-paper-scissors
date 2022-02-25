@@ -21,6 +21,7 @@ import Choises from './Choises';
 import Hands from './Hands';
 import Scores from './Scores';
 import Wrapper from './Wrapper';
+import Author from './Author';
 
 function App(): JSX.Element {
   const [computerChoise, setComputerChoise] = useState<GameObjOrNull>(null);
@@ -63,38 +64,40 @@ function App(): JSX.Element {
   };
 
   return (
-    <Wrapper className="app">
-      <Scores
-        userScore={userScore}
-        computerScore={computerScore}
-        scoreOneText={scoreLeftText}
-        scoreTwoText={scoreRightText}
-        btnText={scoreBtnText}
-        resetHandler={resetHandler}
-      />
-      {renderIf(
-        wating,
-        <Hands handObjects={data} handClickHandler={handClickHandler} />
-      )}
-      {renderIf(
-        !wating,
-        <Choises
-          winner={wonLast}
-          userChoise={userChoise}
-          computerChoise={computerChoise}
-          btnText={choisesBtnText}
-          housePickText={choisesLeftText}
-          userPickText={choisesRightText}
-          playAgianHandler={playAgianHandler}
+    <>
+      <Wrapper className="app">
+        <Scores
+          userScore={userScore}
+          computerScore={computerScore}
+          scoreOneText={scoreLeftText}
+          scoreTwoText={scoreRightText}
+          btnText={scoreBtnText}
+          resetHandler={resetHandler}
         />
-      )}
-    </Wrapper>
+        {renderIf(
+          wating,
+          <Hands handObjects={data} handClickHandler={handClickHandler} />
+        )}
+        {renderIf(
+          !wating,
+          <Choises
+            winner={wonLast}
+            userChoise={userChoise}
+            computerChoise={computerChoise}
+            btnText={choisesBtnText}
+            housePickText={choisesLeftText}
+            userPickText={choisesRightText}
+            playAgianHandler={playAgianHandler}
+          />
+        )}
+      </Wrapper>
+      <Author name="Suleiman Ali" className="author" />
+    </>
   );
 }
 
 export default App;
 
 // TODO ADD RULES PAGE
-// TODO ADD AUTHOR COMPONENT
 // TODO REFACTOR Functionality
 // TODO REFACTOR STYLEING

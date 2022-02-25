@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+
 :root {
 }
 
@@ -36,4 +38,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.author {
+  width: 100%;
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Redressed', cursive;
+  font-size: 1.75rem;
+  text-align: center;
+  color: #fff;
+
+  @media screen and (min-width: $break-point-1) {
+    font-size: 2rem;
+  }
+
+  span {
+    text-decoration: underline;
+    transition: word-spacing 0.1s;
+
+    @media screen and (min-width: $break-point-1) {
+      &:hover {
+        word-spacing: 0.1rem;
+      }
+    }
+  }
 }
