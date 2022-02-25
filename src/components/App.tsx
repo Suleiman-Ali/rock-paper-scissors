@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import React, {
+  ButtonHTMLAttributes,
+  MouseEventHandler,
+  useState,
+} from 'react';
 import { GameObjOrNull } from '../common/types';
 import {
   equals,
@@ -22,6 +26,8 @@ import Hands from './Hands';
 import Scores from './Scores';
 import Wrapper from './Wrapper';
 import Author from './Author';
+import QuestionMark from './QuestionMark';
+import Rules from './Rules';
 
 function App(): JSX.Element {
   const [computerChoise, setComputerChoise] = useState<GameObjOrNull>(null);
@@ -30,6 +36,7 @@ function App(): JSX.Element {
   const [computerScore, setComputerScore] = useState<number>(0);
   const [wating, setWating] = useState<boolean>(true);
   const [wonLast, setWonLast] = useState<string>('');
+  const [isRules, setIsRules] = useState<boolean>(false);
 
   const handClickHandler = (userChoose: GameObjOrNull): void => {
     const computerChoose = getComputerChoise();
@@ -63,6 +70,11 @@ function App(): JSX.Element {
     setWating(true);
   };
 
+  const toggleRules = (e: React.MouseEvent<HTMLElement>): void => {
+    e.stopPropagation();
+    setIsRules((isRules) => !isRules);
+  };
+
   return (
     <>
       <Wrapper className="app">
@@ -91,7 +103,14 @@ function App(): JSX.Element {
           />
         )}
       </Wrapper>
+
       <Author name="Suleiman Ali" className="author" />
+      <QuestionMark className="questionMark" clickHandler={toggleRules} />
+
+      {renderIf(
+        isRules,
+        <Rules className="rules" clickHandler={toggleRules} />
+      )}
     </>
   );
 }
