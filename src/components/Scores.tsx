@@ -32,7 +32,7 @@ function Scores({
       <Button
         text={btnText}
         className={styles.scores__btn}
-        clickHandler={() => resetHandler()}
+        clickHandler={resetHandler}
       />
       <Score
         text={scoreTwoText}

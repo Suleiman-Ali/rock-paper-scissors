@@ -1,11 +1,11 @@
+import styles from '../styles/Author.module.scss';
 interface AuthorProps {
   name: string;
-  className: string;
 }
 
-function Author({ name, className }: AuthorProps): JSX.Element {
+function Author({ name }: AuthorProps): JSX.Element {
   return (
-    <p className={className}>
+    <p className={styles.author}>
       Designed and Coded by <span>&lt;{name} /&gt;</span>
     </p>
   );

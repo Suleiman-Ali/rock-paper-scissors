@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import './Vars.scss';
+
+.author {
+  width: 100%;
+
+  position: absolute;
+  bottom: 10rem;
+  left: 50%;
+
+  font-family: 'Redressed', cursive;
+  font-size: 1.75rem;
+  text-align: center;
+  color: $text-color;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: $break-point-1) {
+    font-size: 2rem;
+    bottom: 5rem;
+  }
+
+  span {
+    text-decoration: underline;
+    transition: word-spacing 0.1s;
+
+    @media screen and (min-width: $break-point-1) {
+      &:hover {
+        word-spacing: 0.1rem;
+      }
+    }
+  }
+}

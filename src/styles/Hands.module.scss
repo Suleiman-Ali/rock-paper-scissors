@@ -1,5 +1,16 @@
-$break-point-0: 500px;
-$break-point-1: 600px;
+@import './Vars.scss';
+
+@mixin translateXy($x, $y) {
+  transform: translateX($x) translateY($y);
+}
+
+@mixin translateYScale($y, $scale) {
+  transform: translateY($y) scale($scale);
+}
+
+@mixin animate($name) {
+  animation: $name 5s infinite ease both;
+}
 
 .hands {
   max-width: 100rem;
@@ -26,15 +37,15 @@ $break-point-1: 600px;
 
     @media screen and (min-width: $break-point-1) {
       &:nth-child(1) {
-        animation: shake-1 5s infinite ease both;
+        @include animate(shake-1);
       }
 
       &:nth-child(2) {
-        animation: shake-2 5s infinite ease both;
+        @include animate(shake-2);
       }
 
       &:nth-child(3) {
-        animation: shake-3 5s infinite ease both;
+        @include animate(shake-3);
       }
 
       &:hover {
@@ -51,54 +62,54 @@ $break-point-1: 600px;
 
 @keyframes shake-1 {
   25% {
-    transform: translateX(-0.5rem) translateY(-0.5rem);
+    @include translateXy(-0.5rem, -0.5rem);
   }
 
   50% {
-    transform: translateX(0) translateY(0);
+    @include translateXy(0, 0);
   }
 
   75% {
-    transform: translateX(0.5rem) translateY(0.5rem);
+    @include translateXy(0.5rem, 0.5rem);
   }
 
   100% {
-    transform: translateX(0) translateY(0);
+    @include translateXy(0, 0);
   }
 }
 
 @keyframes shake-2 {
   25% {
-    transform: translateY(-0.5rem) scale(1.1);
+    @include translateYScale(-0.5rem, 1.1);
   }
 
   50% {
-    transform: translateY(0) scale(1);
+    @include translateYScale(0, 1);
   }
 
   75% {
-    transform: translateY(-0.5rem) scale(1.1);
+    @include translateYScale(-0.5rem, 1.1);
   }
 
   100% {
-    transform: translateY(0) scale(1);
+    @include translateYScale(0, 1);
   }
 }
 
 @keyframes shake-3 {
   25% {
-    transform: translateX(0.5rem) translateY(0.5rem);
+    @include translateXy(0.5rem, 0.5rem);
   }
 
   50% {
-    transform: translateX(0) translateY(0);
+    @include translateXy(0, 0);
   }
 
   75% {
-    transform: translateX(-0.5rem) translateY(-0.5rem);
+    @include translateXy(-0.5rem, -0.5rem);
   }
 
   100% {
-    transform: translateX(0) translateY(0);
+    @include translateXy(0, 0);
   }
 }

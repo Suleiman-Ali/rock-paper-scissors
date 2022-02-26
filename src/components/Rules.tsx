@@ -1,17 +1,18 @@
 import { MouseEventHandler } from 'react';
 import Logo from '../imgs/image-rules.svg';
 import Button from './Button';
+import styles from '../styles/Rules.module.scss';
 
 interface RulesProps {
-  className: string;
-  clickHandler: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+  closeRulesWindow: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+  btnText: string;
 }
 
-function Rules({ className, clickHandler }: RulesProps): JSX.Element {
+function Rules({ closeRulesWindow, btnText }: RulesProps): JSX.Element {
   return (
-    <div className={className} onClick={clickHandler}>
+    <div className={styles.rules} onClick={closeRulesWindow}>
       <img src={Logo} alt="" />
-      <Button text="❌" clickHandler={clickHandler} />
+      <Button text={btnText} clickHandler={closeRulesWindow} />
     </div>
   );
 }

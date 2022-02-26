@@ -1,21 +1,24 @@
 import { MouseEventHandler } from 'react';
 import Button from './Button';
+import styles from '../styles/QuestionMark.module.scss';
 
 interface QuestionMarkProps {
-  className: string;
-  clickHandler: MouseEventHandler<HTMLButtonElement>;
+  openRulesWindow: MouseEventHandler<HTMLButtonElement>;
+  title?: string;
+  text: string;
 }
 
 function QuestionMark({
-  className,
-  clickHandler,
+  openRulesWindow,
+  title,
+  text,
 }: QuestionMarkProps): JSX.Element {
   return (
     <Button
-      title="Rules"
-      text="❔"
-      className={className}
-      clickHandler={clickHandler}
+      title={title}
+      text={text}
+      className={styles.questionMark}
+      clickHandler={openRulesWindow}
     />
   );
 }

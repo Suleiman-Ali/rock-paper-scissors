@@ -1,4 +1,4 @@
-$break-point-1: 600px;
+@import './Vars.scss';
 
 .scores {
   position: relative;
@@ -15,6 +15,9 @@ $break-point-1: 600px;
   border: 2px solid rgba(#fff, 0.15);
   border-radius: 3px;
 
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+
   &__score {
     width: 100%;
 
@@ -25,13 +28,16 @@ $break-point-1: 600px;
     gap: 0.25rem;
 
     padding: 1rem 0.5rem;
-    background-color: white;
+    background-color: $back;
     border-radius: 3px;
+
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
   }
 
   &__text {
     font-size: 1.25rem;
-    color: #040484;
+    color: $text-color;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -42,7 +48,7 @@ $break-point-1: 600px;
   }
 
   &__number {
-    color: #555;
+    color: $number-color;
     font-size: 3rem;
     font-weight: 600;
 

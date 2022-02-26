@@ -15,7 +15,7 @@ function Result({ winner, btnText, blockCls, textCls, btnCls, playAgianHandler }
   return (
     <Wrapper className={blockCls}>
       <p className={textCls}>{winner}</p>
-      <Button className={btnCls} text={btnText} clickHandler={() => playAgianHandler()}  />
+      <Button className={btnCls} text={btnText} clickHandler={playAgianHandler}  />
     </Wrapper>
   );
 }

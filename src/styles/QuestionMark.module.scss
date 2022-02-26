@@ -1,0 +1,25 @@
+@import './Vars.scss';
+
+.questionMark {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 4rem;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  @media screen and (min-width: $break-point-1) {
+    transition: 0.15s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}

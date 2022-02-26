@@ -1,8 +1,4 @@
-import React, {
-  ButtonHTMLAttributes,
-  MouseEventHandler,
-  useState,
-} from 'react';
+import React, { useState } from 'react';
 import { GameObjOrNull } from '../common/types';
 import {
   equals,
@@ -12,14 +8,18 @@ import {
   whoWon,
 } from '../common/helpers';
 import data, {
-  choisesBtnText,
-  choisesLeftText,
-  choisesRightText,
+  AUTHOR_NAME,
   COMPUTER,
-  scoreBtnText,
-  scoreLeftText,
-  scoreRightText,
+  QUESTION_MARK_TEXT,
+  QUESTION_MARK_TITLE,
   USER,
+  CHOISES_LEFT_TEXT,
+  CHOISES_RIGHT_TEXT,
+  CHOISES_BTN_TEXT,
+  SCORE_LEFT_TEXT,
+  SCOERE_BTN_TEXT,
+  SCORE_RIGHT_TEXT,
+  X_MARK,
 } from '../common/data';
 import Choises from './Choises';
 import Hands from './Hands';
@@ -28,6 +28,7 @@ import Wrapper from './Wrapper';
 import Author from './Author';
 import QuestionMark from './QuestionMark';
 import Rules from './Rules';
+import styles from '../styles/App.module.scss';
 
 function App(): JSX.Element {
   const [computerChoise, setComputerChoise] = useState<GameObjOrNull>(null);
@@ -77,13 +78,18 @@ function App(): JSX.Element {
 
   return (
     <>
-      <Wrapper className="app">
+      {renderIf(
+        isRules,
+        <Rules closeRulesWindow={toggleRules} btnText={X_MARK} />
+      )}
+
+      <Wrapper className={styles.app}>
         <Scores
           userScore={userScore}
           computerScore={computerScore}
-          scoreOneText={scoreLeftText}
-          scoreTwoText={scoreRightText}
-          btnText={scoreBtnText}
+          scoreOneText={SCORE_LEFT_TEXT}
+          scoreTwoText={SCORE_RIGHT_TEXT}
+          btnText={SCOERE_BTN_TEXT}
           resetHandler={resetHandler}
         />
         {renderIf(
@@ -96,27 +102,23 @@ function App(): JSX.Element {
             winner={wonLast}
             userChoise={userChoise}
             computerChoise={computerChoise}
-            btnText={choisesBtnText}
-            housePickText={choisesLeftText}
-            userPickText={choisesRightText}
+            btnText={CHOISES_BTN_TEXT}
+            housePickText={CHOISES_LEFT_TEXT}
+            userPickText={CHOISES_RIGHT_TEXT}
             playAgianHandler={playAgianHandler}
           />
         )}
       </Wrapper>
 
-      <Author name="Suleiman Ali" className="author" />
-      <QuestionMark className="questionMark" clickHandler={toggleRules} />
+      <Author name={AUTHOR_NAME} />
 
-      {renderIf(
-        isRules,
-        <Rules className="rules" clickHandler={toggleRules} />
-      )}
+      <QuestionMark
+        title={QUESTION_MARK_TITLE}
+        text={QUESTION_MARK_TEXT}
+        openRulesWindow={toggleRules}
+      />
     </>
   );
 }
 
 export default App;
-
-// TODO ADD RULES PAGE
-// TODO REFACTOR Functionality
-// TODO REFACTOR STYLEING
