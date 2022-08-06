@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import { GameObjOrNull } from '../common/types';
 import {
   equals,
@@ -71,7 +71,7 @@ function App(): JSX.Element {
     setWating(true);
   };
 
-  const toggleRules = (e: React.MouseEvent<HTMLElement>): void => {
+  const toggleRules = (e: MouseEvent<HTMLElement>): void => {
     e.stopPropagation();
     setIsRules((isRules) => !isRules);
   };
