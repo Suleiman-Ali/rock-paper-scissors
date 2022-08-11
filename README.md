@@ -4,7 +4,7 @@ Rock Paper Scissors is a simple childhood game.
 
 ![Alt text](./site-image.png)
 
-### Built Using
+### Technologies
 - HTML
 - SASS
 - Typescript 
