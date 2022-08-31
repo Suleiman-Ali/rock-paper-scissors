@@ -25,7 +25,6 @@ import Choises from './Choises';
 import Hands from './Hands';
 import Scores from './Scores';
 import Wrapper from './Wrapper';
-import Author from './Author';
 import QuestionMark from './QuestionMark';
 import Rules from './Rules';
 import styles from '../styles/App.module.scss';
@@ -109,8 +108,6 @@ function App(): JSX.Element {
           />
         )}
       </Wrapper>
-
-      <Author name={AUTHOR_NAME} />
 
       <QuestionMark
         title={QUESTION_MARK_TITLE}
